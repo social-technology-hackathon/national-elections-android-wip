@@ -63,17 +63,16 @@ class FirestoreDataSource(
         }
 
         return RxFirebaseStorage.putBytes(imageRef, array, metadata)
-            .flatMapCompletable {
-                Completable.fromCallable {
-                    try {
-                        val secret = secret()
-                        val hash = encrypt(array, secret)
-                        Timber.d("Ok, hash size: ${hash.size}. Secret: ${Arrays.toString(secret.encoded)}")
-                    } catch (ex: Throwable) {
-                        Timber.e(ex, "Failed")
-                    }
-                }
+            .flatMap {
+                val secret = secret()
+                val hash = encrypt(array, secret)
+                RxFirebaseStorage.putBytes(hashRef, hash, storageMetadata {
+                    setCustomMetadata("encoded", Arrays.toString(secret.encoded))
+                    setCustomMetadata("algorithm", secret.algorithm)
+                    setCustomMetadata("format", secret.format)
+                })
             }
+            .ignoreElement()
             .subscribeOn(schedulerProvider.io())
     }
 
