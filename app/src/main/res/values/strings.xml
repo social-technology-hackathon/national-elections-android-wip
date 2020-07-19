@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ElectionsBy</string>
+    <string name="app_title">ГОЛОСОВАНИЕ НАЧНЕТСЯ ЧЕРЕЗ 15 ДНЕЙ</string>
+    <string name="google_sign_in">Вход для волонтеров</string>
+    <string name="main_support">Поддержка</string>
+    <string name="main_activate">Активация</string>
+    <string name="support_description">У вас нет прав доступа, для создания точки сбора. Пожалуйста обратитесь к администратору.</string>
+    <string name="enable_location_switch_title">Включить передачу данных о местоположении</string>
+    <string name="disable_location_switch_title">Выключить передачу данных о местоположении</string>
+    <string name="no_permission_location_switch_title">Включите доступ к местоположению в настройках телефона</string>
+    <string name="location_is_required_switch_title">Активация будет доступна после получения местоположения</string>
+    <string name="shutter">Shutter</string>
+    <string name="switch_camera_button_alt">switch</string>
+    <string name="gallery_button_alt">gallery</string>
+    <string name="help_button_alt">help</string>
+</resources>

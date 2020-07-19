@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:theme="@style/SplashTheme"
+            tools:context=".ui.splash.SplashScreenFragment">
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/viewFinder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Camera control and gallery buttons -->
+
+            <ImageButton
+                android:id="@+id/view_button"
+                android:layout_width="@dimen/bottom_app_bar_height"
+                android:layout_height="@dimen/bottom_app_bar_height"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:background="@drawable/ic_outer_circle"
+                android:clickable="true"
+                android:contentDescription="@string/gallery_button_alt"
+                android:focusable="true"
+                android:padding="@dimen/spacing_medium"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:srcCompat="@drawable/ic_photo" />
+
+            <ImageButton
+                android:id="@+id/help_button"
+                android:layout_width="@dimen/bottom_app_bar_height"
+                android:layout_height="@dimen/bottom_app_bar_height"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_xlarge"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:contentDescription="@string/help_button_alt"
+                android:focusable="true"
+                android:padding="@dimen/spacing_small"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@drawable/ic_support" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/capture_button"
+            android:layout_width="453dp"
+            android:layout_height="56dp"
+            android:background="@drawable/ic_outer_circle"
+            android:clickable="true"
+            android:contentDescription="@string/shutter"
+            android:focusable="true"
+            android:padding="@dimen/spacing_large"
+            android:soundEffectsEnabled="true"
+            app:backgroundTint="@color/white"
+            app:layout_anchor="@id/bottom_app_bar" />
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="@dimen/bottom_app_bar_fab_cradle_margin"
+            app:fabCradleRoundedCornerRadius="@dimen/bottom_app_bar_fab_cradle_corner_radius"
+            app:fabCradleVerticalOffset="10dp" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

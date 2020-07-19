@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_splash_screen">
+
+    <fragment
+        android:id="@+id/nav_splash_screen"
+        android:name="by.my.elections.presentation.splash.SplashFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash" />
+
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="by.my.elections.presentation.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/nav_main"
+        android:name="by.my.elections.presentation.main.MainFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/fragment_main" />
+
+
+</navigation>

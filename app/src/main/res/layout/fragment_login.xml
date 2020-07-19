@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:theme="@style/SplashTheme"
+        tools:context=".presentation.login.LoginFragment">
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/bg"
+            android:adjustViewBounds="true"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:scaleType="fitCenter"
+            android:layout_height="match_parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/black_900_alpha_060"
+            android:layout_height="match_parent"/>
+
+
+        <TextView
+            android:id="@+id/tv_login_title"
+            style="@style/Splash.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_title"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_google_sig_in"
+            style="@style/Login.GoogleSignIn"
+            android:layout_width="220dp"
+            android:layout_height="64dp"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+
+            android:text="@string/google_sign_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
