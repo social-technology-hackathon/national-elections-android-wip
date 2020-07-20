@@ -11,6 +11,9 @@ import by.my.elections.presentation.navigation.NavigationAction
 import org.koin.android.ext.android.inject
 
 class SingleActivity : AppCompatActivity(), SinglePresenter.View {
+    init {
+        System.loadLibrary("opencv_java4")
+    }
 
     //DataBinding
     lateinit var binding: ActivitySingleBinding

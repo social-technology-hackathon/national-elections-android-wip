@@ -7,6 +7,7 @@ import by.my.elections.presentation.base.BasePresenter
 import com.tbruyelle.rxpermissions2.Permission
 import io.reactivex.Observable
 import io.reactivex.Single
+import org.opencv.core.Mat
 import timber.log.Timber
 
 class MainPresenter(
@@ -83,6 +84,6 @@ class MainPresenter(
         fun hasPermission(): Single<Boolean>
         fun startCamera()
 
-        fun onImageTaken(): Observable<ByteArray>
+        fun onImageTaken(): Observable<Mat>
     }
 }

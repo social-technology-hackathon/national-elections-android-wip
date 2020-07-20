@@ -21,6 +21,8 @@ import io.reactivex.Observable
 import io.reactivex.Single
 import io.reactivex.subjects.PublishSubject
 import org.koin.android.ext.android.inject
+import org.opencv.core.CvType
+import org.opencv.core.Mat
 import timber.log.Timber
 import java.nio.ByteBuffer
 import java.util.concurrent.ExecutorService
@@ -38,7 +40,7 @@ class MainFragment : BaseFragment<MainPresenter.View, MainPresenter>(), MainPres
     private var imageCapture: ImageCapture? = null
     private var camera: Camera? = null
 
-    private val onTakeImageSubject = PublishSubject.create<ByteArray>()
+    private val onTakeImageSubject = PublishSubject.create<Mat>()
 
     private lateinit var cameraExecutor: ExecutorService
 
@@ -99,7 +101,7 @@ class MainFragment : BaseFragment<MainPresenter.View, MainPresenter>(), MainPres
             @SuppressLint("UnsafeExperimentalUsageError")
             override fun onCaptureSuccess(image: ImageProxy) {
                 image.let {
-                    onTakeImageSubject.onNext(it.toByteArray())
+                    onTakeImageSubject.onNext(it.toMat())
                 }
             }
 
@@ -167,7 +169,7 @@ class MainFragment : BaseFragment<MainPresenter.View, MainPresenter>(), MainPres
         return binding.helpButton.clicks()
     }
 
-    override fun onImageTaken(): Observable<ByteArray> = onTakeImageSubject
+    override fun onImageTaken(): Observable<Mat> = onTakeImageSubject
 
 
     fun ImageProxy.toByteArray(): ByteArray {
@@ -176,6 +178,16 @@ class MainFragment : BaseFragment<MainPresenter.View, MainPresenter>(), MainPres
         val bytes = ByteArray(buffer.remaining())
         buffer.get(bytes)
         return bytes
+    }
+
+    private fun ImageProxy.toMat(): Mat {
+        val graySourceMatrix = Mat(height, width, CvType.CV_8UC1)
+        val yBuffer = planes[0].buffer
+        val ySize = yBuffer.remaining()
+        val yPlane = ByteArray(ySize)
+        yBuffer[yPlane, 0, ySize]
+        graySourceMatrix.put(0, 0, yPlane)
+        return graySourceMatrix
     }
 
 

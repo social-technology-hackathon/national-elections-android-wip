@@ -9,6 +9,7 @@ import by.my.elections.data.model.DeviceLocation
 import by.my.elections.domain.repository.FirebaseRepository
 import io.reactivex.Completable
 import io.reactivex.Single
+import org.opencv.core.Mat
 import java.util.concurrent.TimeUnit
 
 class FirebaseRepositoryImpl(
@@ -18,7 +19,7 @@ class FirebaseRepositoryImpl(
 ) : FirebaseRepository {
 
     @RequiresPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-    override fun uploadStream(stream: ByteArray): Completable {
+    override fun uploadStream(stream: Mat): Completable {
         return authDataSource.user()
             .flatMap { user ->
                 locationService.deviceLocation()
